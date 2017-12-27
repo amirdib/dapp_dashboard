@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app='app' ng-jq="jQuery">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>RSM Front End</title>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    
+
+  </head>
+  <body>
+      <script id="__bs_script__">//<![CDATA[
+       document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
+       //]]></script>
+    <nav class="light-blue lighten-1" role="navigation">
+
+      <div class="nav-wrapper container">
+	<a id="logo-container" href="#" class="brand-logo">logo7</a>
+	<ul class="right hide-on-med-and-down" id="menu">
+	    <li><a href="#">Code</a></li>
+	    <li class="active"><a href="templates/dashboard.html">Tableau de bord</a></li>
+	  <li><a href="templates/reports.html">Rapports</a></li>
+	  <li><a href="#">Serveur</a></li>
+	  <li><a href="#">Test</a></li>
+	</ul>
+
+	<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+
+
+    <div class="container" id="content">
+      </div>
+
+      
+  </body>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script src="app.module.js"></script>
+
+  <script src="reports/module.js"></script>
+  <script src="reports/component.js"></script>
+  
+</html>
+
+
+
