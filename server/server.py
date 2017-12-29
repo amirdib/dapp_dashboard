@@ -7,7 +7,7 @@ from bottle import Bottle
 import pdb
 
 
-from utils.process import get_historical_lending
+from utils.process import get_historical_lending, get_collateral_count
 from utils.cors import enable_cors
 
 app = Bottle()
@@ -39,7 +39,8 @@ def get_table():
 
 @app.get('/collaterals')
 def get_collat_statistics():
-    return [{a: '2', b: '4'}, {a: '2', b: '6'}]
+    collateral_count = get_collateral_count(df_loans)
+    return collateral_count.to_json(orient='records')
 
 
 app.run(host='localhost', port=8085)

@@ -14,8 +14,8 @@ angular.
 	    var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
 	    var line = d3.line()
-		.x(function(d) { console.log('line x: ' + x(d.x) + ' - x: ' + d.x); return x(d.x); })
-		.y(function(d) { console.log('line y: ' + y(d.y) + ' - y: ' + d.y);return y(d.y); })
+		.x(function(d) { return x(d.x); })
+		.y(function(d) { return y(d.y); })
 	    .curve(d3.curveMonotoneX);
 	    
 
@@ -29,7 +29,7 @@ angular.
 	    d3.json("http://127.0.0.1:8085/loans", function(error, data) {
 
 	    	if (error) throw error;
-		
+//		debugger;
 	    	data.forEach(function(d) {
 	    	    d.x = parseDate(d.x);
 	    	    d.y = +d.y;
@@ -49,18 +49,19 @@ angular.
 		
 		svg.append('path')
 		    .datum(data)
-//	        .attr('stroke', 'red')
-     	    	.attr('stroke-width', 3)
-     	    	.attr('fill', 'none')
+		    .attr('class', 'line')
 	    	    .attr("d", line);
 
-		svg.selectAll(".dot")
-    .data(dataset)
-  .enter().append("circle") // Uses the enter().append() method
-    .attr("class", "dot") // Assign a class for styling
-    .attr("cx", function(d, i) { return xScale(i) })
-    .attr("cy", function(d) { return yScale(d.y) })
-    .attr("r", 5);
+// 		// svg.selectAll(".dot")
+// 		//     .data(data)
+// 		//     .enter().append("circle") // Uses the enter().append() method
+// 		//     .attr("class", "dot") // Assign a class for styling
+// 		//     .attr("cx", function(d, i) { return x(i); })
+// 		//     .attr("cy", function(d) { return y(d.y); })
+// 		//     .attr("r", 5)
+// 		//     .attr('fill', "#ffab00");bra
+		
+
 
 	    });
 	}]
