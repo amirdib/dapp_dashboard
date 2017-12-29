@@ -10,23 +10,17 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-    
-
   </head>
   <body>
       <script id="__bs_script__">//<![CDATA[
-       document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
-       //]]></script>
+       document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));//]]></script>
     <nav class="light-blue lighten-1" role="navigation">
 
       <div class="nav-wrapper container">
 	<a id="logo-container" href="#" class="brand-logo">logo7</a>
 	<ul class="right hide-on-med-and-down" id="menu">
-	    <li><a href="#">Code</a></li>
-	    <li class="active"><a href="templates/dashboard.html">Tableau de bord</a></li>
-	  <li><a href="templates/reports.html">Rapports</a></li>
-	  <li><a href="#">Serveur</a></li>
-	  <li><a href="#">Test</a></li>
+	    <li><a href="https://github.com/amirdib/dapp_dashboard">Code</a></li>
+	    <li class="active"><a href="#">Dashboard</a></li>
 	</ul>
 
 	<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -34,25 +28,71 @@
     </nav>
 
 
-    <div class="container" id="content">
-      </div>
+    <div class="container-fluid" id="content">
+	<div class="row equal">
+	    <cards></cards>
+	</div>
+	
+	<div class="row equal">
+	    <div class="col s8">
+		<loans></loans>
+	    </div>
+	    <div class="col s4">
+		<collateral></collateral>
+	    </div>
+	</div>
 
-      
+	<div class="row equal">
+	    <div class="col s6">
+		<table></table>
+	    </div>
+	    <div class="col s6">
+		<premium></premium>
+	    </div>
+	</div>
+
+    </div>
+
   </body>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-route/angular-route.min.js"></script>
-
+  <script src="bower_components/plotlyjs/plotly.js"></script>
+  <script src="bower_components/d3/d3.min.js"></script>
+  
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
   <script src="app.module.js"></script>
 
-  <script src="reports/module.js"></script>
-  <script src="reports/component.js"></script>
+  <script src="views/cards/module.js"></script>
+  <script src="views/cards/component.js"></script>
   
-</html>
+  <script src="views/loans/module.js"></script>
+  <script src="views/loans/component.js"></script>
+  
+  <script src="views/premium/module.js"></script>
+  <script src="views/premium/component.js"></script>
+  
+  <script src="views/collateral/module.js"></script>
+  <script src="views/collateral/component.js"></script>
+  
+  <script src="views/table/module.js"></script>
+  <script src="views/table/component.js"></script>
+
+
+  
+</html>    
+         
+
+
+
+
+
+
+
+
 
 
 

@@ -18,6 +18,8 @@
   "dependencies": {
     "angular-route": "^1.6.7",
     "jquery": "^3.2.1",
-    "angular": "^1.6.7"
+    "angular": "^1.6.7",
+    "plotlyjs": "plotly#^1.18.1",
+    "d3": "^4.12.2"
   }
 }

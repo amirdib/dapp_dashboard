@@ -3,3 +3,5 @@ dashboard
 #*#
 #*#
 .*
+*.pyc
+__pycache__

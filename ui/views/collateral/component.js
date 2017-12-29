@@ -1,7 +1,7 @@
 angular.
-    module('reports').
-    component('reports', {
-	templateUrl: 'templates/reports.html',
+    module('collateral').
+    component('collateral', {
+	templateUrl: 'templates/collateral.html',
 	controller: ["$scope",
                      function($scope) {
 			 console.log('test')
