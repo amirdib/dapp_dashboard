@@ -7,7 +7,7 @@ from bottle import Bottle
 import pdb
 
 
-from utils.process import get_historical_lending, get_collateral_count
+from utils.process import get_historical_lending, get_collateral_count, get_amount_by_lender, get_amount_by_borrower
 from utils.cors import enable_cors
 
 app = Bottle()
@@ -17,6 +17,8 @@ df_loans = read_pickle('../data/preprocessed_loans.pickle')
 
 @app.get('/stats/<type>')
 def get_statistic():
+    total_lended = df_loans.dropna(subset=['Lender'])[
+        'NeededSumByBorrower'].sum()
 
     statistic = 100
     return statistic
@@ -34,7 +36,9 @@ def get_loans():
 
 @app.get('/table')
 def get_table():
-    return [{a: '2', b: '4'}, {a: '2', b: '6'}]
+    lenders = get_amount_by_lender(df_loans).to_json(orient='records')
+    borrowers = get_amount_by_borrower(df_loans).to_json(orient='records')
+    return lenders
 
 
 @app.get('/collaterals')

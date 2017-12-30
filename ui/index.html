@@ -7,6 +7,7 @@
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
@@ -17,7 +18,7 @@
     <nav class="light-blue lighten-1" role="navigation">
 
       <div class="nav-wrapper container">
-	<a id="logo-container" href="#" class="brand-logo">logo7</a>
+	<a id="logo-container" href="#" class="brand-logo"></a>
 	<ul class="right hide-on-med-and-down" id="menu">
 	    <li><a href="https://github.com/amirdib/dapp_dashboard">Code</a></li>
 	    <li class="active"><a href="#">Dashboard</a></li>
@@ -29,11 +30,12 @@
 
 
     <div class="container-fluid" id="content">
-	<div class="row equal">
+	
+	<div class="row">
 	    <cards></cards>
 	</div>
 	
-	<div class="row equal">
+	<div class="row">
 	    <div class="col s8">
 		<loans></loans>
 	    </div>
@@ -41,10 +43,12 @@
 		<collateral></collateral>
 	    </div>
 	</div>
-
-	<div class="row equal">
+	
+	<div class="row">
 	    <div class="col s6">
-		<table></table>
+		<div ng-controller="Controller">
+		    <tablemodule></tablemodule>
+		</div>
 	    </div>
 	    <div class="col s6">
 		<premium></premium>
@@ -56,8 +60,17 @@
   </body>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/angular/angular.min.js"></script>
-  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.3/angular.js"></script>
+  <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/0.8.3/ng-table.min.js"></script>
+
+  <!-- <script src="bower_components/angular/angular.min.js"></script> -->
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script> -->
+  <!-- <script src="bower_components/angular/angular.min.js"></script>
+       <script src="bower_components/ng-table/dist/ng-table.min.js"></script> -->
+  
+  <!-- <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script> -->
+  <!-- <script src="bower_components/angular-route/angular-route.min.js"></script> -->
   <script src="bower_components/plotlyjs/plotly.js"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
@@ -69,6 +82,7 @@
   <script src="js/init.js"></script>
 
   <script src="app.module.js"></script>
+  <script src="views/table/component.js"></script>
 
   <script src="views/cards/module.js"></script>
   <script src="views/cards/component.js"></script>
@@ -82,8 +96,8 @@
   <script src="views/collateral/module.js"></script>
   <script src="views/collateral/component.js"></script>
   
-  <script src="views/table/module.js"></script>
-  <script src="views/table/component.js"></script>
+  <!-- <script src="views/table/module.js"></script> -->
+
 
 
   

@@ -1,0 +1,8 @@
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="user in $data">
+        <td title="'Address'" filter="{ address: 'text'}" sortable="'address'">
+            {{user.address}}</td>
+        <td title="'Amount'" filter="{ amount: 'number'}" sortable="'amount'">
+            {{user.amount}}</td>
+    </tr>
+</table>

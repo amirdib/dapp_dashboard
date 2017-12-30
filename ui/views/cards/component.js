@@ -4,7 +4,7 @@ angular.
 	templateUrl: 'templates/cards.html',
 	controller: ["$scope",
                      function($scope) {
-			 console.log('test')
+			 
 
 		     }]
     });

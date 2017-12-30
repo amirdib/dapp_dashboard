@@ -4,7 +4,6 @@ angular.
 	templateUrl: 'templates/premium.html',
 	controller: ["$scope",
                      function($scope) {
-			 console.log('test')
 
 		     }]
     });

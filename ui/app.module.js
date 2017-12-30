@@ -1,2 +1,2 @@
 'use strict';
-angular.module('app', ['cards', 'loans', 'premium', 'collateral','table']);
+angular.module('app', ['cards', 'loans', 'premium', 'collateral','tableModule']);

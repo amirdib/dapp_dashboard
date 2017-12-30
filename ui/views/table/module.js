@@ -1,2 +1,2 @@
 'use strict';
-angular.module('table', []);
+//angular.module('table', ['ngTable']);

@@ -5,6 +5,9 @@
  *
  * Made By MaterializeCSS.com
  */
+body {
+	background: hsl(0, 0%, 90%);
+}
 
 .icon-block {
   padding: 0 15px;
@@ -16,4 +19,13 @@
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
+}
+
+div .teal{
+    text-align:center;
+}
+.stat{
+    font-size: 300%;
+
+
 }
