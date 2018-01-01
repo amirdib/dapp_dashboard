@@ -1,116 +1,137 @@
 <!DOCTYPE html>
 <html ng-app='app' ng-jq="jQuery">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>RSM Front End</title>
+    <head>
+        <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Float grid demo</title>
 
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-  </head>
-  <body>
-      <script id="__bs_script__">//<![CDATA[
-       document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));//]]></script>
-    <nav class="light-blue lighten-1" role="navigation">
-
-      <div class="nav-wrapper container">
-	<a id="logo-container" href="#" class="brand-logo"></a>
-	<ul class="right hide-on-med-and-down" id="menu">
-	    <li><a href="https://github.com/amirdib/dapp_dashboard">Code</a></li>
-	    <li class="active"><a href="#">Dashboard</a></li>
-	</ul>
-
-	<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-      </div>
-    </nav>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
 
 
-    <div class="container-fluid" id="content">
-	
-	<div class="row">
-	    <cards></cards>
-	</div>
-	
-	<div class="row">
-	    <div class="col s8">
-		<loans></loans>
-	    </div>
-	    <div class="col s4">
-		<collateral></collateral>
-	    </div>
-	</div>
-	
-	<div class="row">
-	    <div class="col s6">
-		<div ng-controller="Controller">
-		    <tablemodule></tablemodule>
-		</div>
-	    </div>
-	    <div class="col s6">
-		<premium></premium>
-	    </div>
-	</div>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.css" />
 
-    </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="style.css">
 
-  </body>
+        <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
+        <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.jQueryUI.min.js'></script>
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.3/angular.js"></script>
-  <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/0.8.3/ng-table.min.js"></script>
+    </head>
 
-  <!-- <script src="bower_components/angular/angular.min.js"></script> -->
-  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script> -->
-  <!-- <script src="bower_components/angular/angular.min.js"></script>
-       <script src="bower_components/ng-table/dist/ng-table.min.js"></script> -->
-  
-  <!-- <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script> -->
-  <!-- <script src="bower_components/angular-route/angular-route.min.js"></script> -->
-  <script src="bower_components/plotlyjs/plotly.js"></script>
+    <body>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
-  <script src="bower_components/d3pie/d3pie/d3pie.min.js"></script>
+        <!-- START NAV -->
+        <nav class="navbar is-white">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item brand-text" href="#">
+                        Dashboard
+                    </a>
+                    <div class="navbar-burger burger" data-target="navMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div id="navMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="https://github.com/amirdib/dapp_dashboard">
+                            Source
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- END NAV -->
+
+        <div class="container">
+
+            <section>
+                <div class="grid-stack">
 
 
-  
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
-  <script src="app.module.js"></script>
-  <script src="views/table/component.js"></script>
-
-  <script src="views/cards/module.js"></script>
-  <script src="views/cards/component.js"></script>
-  
-  <script src="views/loans/module.js"></script>
-  <script src="views/loans/component.js"></script>
-  
-  <script src="views/premium/module.js"></script>
-  <script src="views/premium/component.js"></script>
-  
-  <script src="views/collateral/module.js"></script>
-  <script src="views/collateral/component.js"></script>
-  
-  <!-- <script src="views/table/module.js"></script> -->
+                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+                        <article class="tile is-child box grid-stack-item-content">
+                            <p class="title">Value Card 1</p>
+                            <p class="subtitle">Card 1</p>
+                        </article>
+                    </div>
+                    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+                        <article class="tile is-child box grid-stack-item-content">
+                            <p class="title">Value Card 2</p>
+                            <p class="subtitle">Card 2</p>
+                        </article>
+                    </div>
 
 
-
-  
-</html>    
-         
-
-
-
-
-
+                    <div class="grid-stack-item"
+                         data-gs-x="1" data-gs-y="3"
+                         data-gs-width="9" data-gs-height="4">
+                        <div class="grid-stack-item-content" id='loans-graph'>
+                            <loans></loans>
+                        </div>
+                    </div>
 
 
+                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="8" data-gs-width="7" data-gs-height="7">
+                        <div class="tile is-child box grid-stack-item-content" id="pieChart">
+                            <collateral></collateral>
+
+                        </div>
+                    </div>
 
 
+                    <div class="grid-stack-item" data-gs-x="4" data-gs-y="17" data-gs-width="7" data-gs-height="8">
+                        <article class="tile is-child box grid-stack-item-content">
+                            <div ng-controller="Controller">
+                                <tablemodule></tablemodule>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </section>
+        </div>
 
 
+        <script type="text/javascript">
+            var options = {
+                animate: true,
+                rtl: true,
+                float: false
+            };
+            $(function () {
+                $('.grid-stack').gridstack(options);
+            });
+        </script>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.3/angular.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/0.8.3/ng-table.min.js"></script>
+
+    <script src="bower_components/d3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
+    <script src="bower_components/d3pie/d3pie/d3pie.min.js"></script>
+
+    <script src='app.modules.js'></script>
+
+    <script src="views/loans/module.js"></script>
+    <script src="views/loans/component.js"></script>
+
+    <script src="views/collateral/module.js"></script>
+    <script src="views/collateral/component.js"></script>
+
+    <script src="views/table/component.js"></script>
+
+</html>

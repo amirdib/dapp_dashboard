@@ -1,68 +1,95 @@
 angular.
-    module('loans').
-    component('loans', {
-	templateUrl: 'templates/loans.html',
-	controller: ['$scope', '$http', function($scope, $http) {
-	    
-	    var margin = {top: 20, right: 20, bottom: 30, left: 50},
-		width = 700 - margin.left - margin.right,
-		height = 400 - margin.top - margin.bottom;
+module('loans').
+component('loans', {
+    templateUrl: 'templates/loans.html',
+    controller: ['$scope', '$http', function($scope, $http) {
+        console.log('enter loans module')
 
-	    var x = d3.scaleTime().range([0, width]);
-	    var y = d3.scaleLinear().range([height, 0]);
+        var margin = {top: 20, right: 20, bottom: 30, left: 50};
+        width = parseInt(d3.select('#loans-graph').style('width'), 10)
+        height = parseInt(d3.select('#loans-graph').style('height'), 10)
 
-	    var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
+        var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
-	    var line = d3.line()
-		.x(function(d) { return x(d.x); })
-		.y(function(d) { return y(d.y); })
-	    .curve(d3.curveMonotoneX);
-	    
+        d3.json("http://127.0.0.1:8085/loans", function(error, data) {
 
-	    var svg = d3.select("#graph").append("svg")
-	    	.attr("width", width + margin.left + margin.right)
-	    	.attr("height", height + margin.top + margin.bottom)
-	    	.append("g")
-	    	.attr("transform",
-	    	      "translate(" + margin.left + "," + margin.top + ")");
+            if (error) throw error;
 
-	    d3.json("http://127.0.0.1:8085/loans", function(error, data) {
+            console.log(data)
 
-	    	if (error) throw error;
-//		debugger;
-	    	data.forEach(function(d) {
-	    	    d.x = parseDate(d.x);
-	    	    d.y = +d.y;
-	    	});
+            data.forEach(function(d) {
+                d.x = parseDate(d.x);
+                d.y = +d.y;
+            });
 
-		// Scale the range
-		x.domain(d3.extent(data, function(d) { return d.x; }));
- 		y.domain([0, d3.max(data, function(d) { return d.y; })]);
-		
-// 		// Add the X/Y  Axis
-		svg.append("g")
-		    .attr("transform", "translate(0," + height + ")")
-		    .call(d3.axisBottom(x));
-		svg.append("g")
-		    .call(d3.axisLeft(y));
+            $('.grid-stack').on('gsresizestop', function (event, elem) {
 
-		
-		svg.append('path')
-		    .datum(data)
-		    .attr('class', 'line')
-	    	    .attr("d", line);
+                var grid = $('.grid-stack').data('gridstack');
+                var gridCellWidth = grid.cellWidth(),
+                    gridCellHeight = grid.cellHeight();
 
-// 		// svg.selectAll(".dot")
-// 		//     .data(data)
-// 		//     .enter().append("circle") // Uses the enter().append() method
-// 		//     .attr("class", "dot") // Assign a class for styling
-// 		//     .attr("cx", function(d, i) { return x(i); })
-// 		//     .attr("cy", function(d) { return y(d.y); })
-// 		//     .attr("r", 5)
-// 		//     .attr('fill', "#ffab00");bra
-		
+                var gridVerticalMargin = grid.opts.verticalMargin;
 
+                var elemWidth = $(elem).attr('data-gs-width'),
+                    elemHeight = $(elem).attr('data-gs-height');
 
-	    });
-	}]
-    });
+                var width = gridCellWidth * elemWidth,
+                    height = gridCellHeight * elemHeight + gridVerticalMargin * (elemHeight - 1);
+
+                redraw(width, height);
+            });
+
+            function redraw(width, height ){
+
+                width = width - margin.left - margin.right,
+                    height = height - margin.top - margin.bottom;
+
+                d3.select("#loans-graph svg").remove()
+                var svg = d3.select("#loans-graph").append("svg")
+                .attr("class", "d3-graph")
+                .attr("width", "100%")
+                .attr("height", height + margin.top + margin.bottom),
+                    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                var x = d3.scaleTime()
+                .rangeRound([0, width]);
+
+                var y = d3.scaleLinear()
+                .rangeRound([height, 0]);
+
+                var area = d3.area()
+                .x(function(d) { return x(d.x); })
+                .y1(function(d) { return y(d.y); });
+
+                // Scale the range
+                x.domain(d3.extent(data, function(d) { return d.x; }));
+                y.domain([0, d3.max(data, function(d) { return d.y; })]);
+                area.y0(y(0));
+
+                g.append("path")
+                    .datum(data)
+                    .attr("fill", "steelblue")
+                    .attr("d", area);
+
+                g.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.axisBottom(x));
+
+                g.append("g")
+                    .attr("class", "xAxis")
+                    .call(d3.axisLeft(y))
+                    .append("text")
+                    .attr("fill", "#000")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", 7)
+                    .attr("dy", "2em")
+                    .text("Total (ETH)");
+
+                d3.select(".xAxis").attr("text-anchor", "begin")
+            }
+
+            console.log('drawing with width ' + width + ', height ' + height)
+            redraw(width, height);
+        });
+    }]
+});

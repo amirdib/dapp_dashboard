@@ -5,3 +5,5 @@ dashboard
 .*
 *.pyc
 __pycache__
+log/
+logs/

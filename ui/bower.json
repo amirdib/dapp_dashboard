@@ -1,12 +1,12 @@
 {
-  "name": "rsm",
+  "name": "ETHLEND dashboard",
+  "homepage": "https://github.com/amirdib/dapp_dashboard",
   "authors": [
-    "Amir Dib <amir.dib@clma.ens-cachan.fr"
+    "Amir Dib <dib.amir@gmail.com>"
   ],
-  "description": "front end of rsm project",
+  "description": "",
   "main": "index.html",
   "license": "MIT",
-  "homepage": "",
   "private": true,
   "ignore": [
     "**/.*",
@@ -16,12 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-route": "^1.6.7",
-    "jquery": "^3.2.1",
-    "angular": "^1.6.7",
-    "plotlyjs": "plotly#^1.18.1",
     "d3": "^4.12.2",
-    "d3pie": "^0.2.1",
-    "ng-table": "^4.0.0"
+    "d3pie": "^0.2.1"
   }
 }
