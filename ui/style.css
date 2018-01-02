@@ -74,6 +74,7 @@ height:80%;
     width: 100%;
     height: 50px;
     font-weight: 400;
+    z-index:5;
 }
 
 .card-header-title {
@@ -150,7 +151,16 @@ div#loans-graph{
 
 }
 
-.ui-resizable-se{
-          width: 125px;
-      height: 45px;
+.grid-stack > .grid-stack-item > .ui-resizable-se, .grid-stack > .grid-stack-item > .ui-resizable-sw{
+background-image:;
+}
+
+.has-icons-left {
+    padding: 10px;
+}
+
+
+
+.button {
+    top: 10px;
 }

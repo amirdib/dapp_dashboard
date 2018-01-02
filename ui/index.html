@@ -49,18 +49,33 @@
                             Application
                         </a>
                     </div>
-                    <a href="#" id="clearDashboard" class="card-header-icon" aria-label="Delete card">
+
+
+                    <a class="button is-medium" ng-controller="widgetController" ng-click="removeAll()" >
                         <span class="icon">
                             <i class="fa fa-trash-o fa-lg"></i>
                         </span>
-                        Clear
+                        <span>Clear</span>
                     </a>
-                    <a href="#" id="addCard" class="card-header-icon" aria-label="Delete card">
-                        <span class="icon ">
+
+
+
+                    <div class="control has-icons-left" ng-controller="widgetController">
+                        <div class="select is-medium">
+                            <select>
+                                <option selected>Add card</option>
+                                <option ng-click="addWidget('card')">Card</option>
+                                <option ng-click="addWidget('total')">Total amount</option>
+                                <option ng-click="addWidget('collaterals')">Collaterals</option>
+                                <option ng-click="addWidget('topLenders')">Top Lenders</option>
+                                <option ng-click="addWidget('topBorrowers')">Top Borrowers</option>
+                            </select>
+
+                        </div>
+                        <span class="icon is-large is-left">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        Add card
-                    </a>
+                    </div>
 
                 </div>
             </div>
@@ -70,7 +85,7 @@
         <div class="container">
 
             <section>
-                <div class="grid-stack">
+                <div class="grid-stack" ng-controller="widgetController" ng-click=remove($event)>
 
 
 
@@ -204,5 +219,7 @@ data-gs-width="9" data-gs-height="4">
     <script src="views/collateral/component.js"></script>
 
     <script src="views/table/component.js"></script>
+    <script src="views/widget/module.js"></script>
+    <script src="views/widget/component.js"></script>s
 
 </html>
