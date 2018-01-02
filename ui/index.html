@@ -74,14 +74,14 @@
 
 
 
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+                    <div class="grid-stack-item" data-gs-x="1" data-gs-y="0" data-gs-width="4" data-gs-height="2">
                         <article class="tile is-child box grid-stack-item-content">
                             <p class="title">Value Card 1</p>
                             <p class="subtitle">Card 1</p>
                         </article>
                     </div>
 
-                    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+                    <div class="grid-stack-item" data-gs-x="6" data-gs-y="0" data-gs-width="4" data-gs-height="2">
                         <article class="tile is-child box grid-stack-item-content">
                             <p class="title">Value Card 2</p>
                             <p class="subtitle">Card 2</p>
@@ -89,7 +89,7 @@
                     </div>
 
 
-                    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="5" data-gs-height="4">
+                    <div class="grid-stack-item" data-gs-x="1" data-gs-y="3" data-gs-width="10" data-gs-height="4">
                         <div class="grid-stack-item-content card" id='loans-graph'>
                             <header class="card-header">
                                 <p class="card-header-title" align="center">
@@ -103,6 +103,45 @@
                             </header>
                             <div class="card-content" >
                                 <div class='content'><loans></loans></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-stack-item" data-gs-x="7" data-gs-y="6" data-gs-width="5" data-gs-height="6">
+                        <div class="grid-stack-item-content card" id='pieChart'>
+                            <header class="card-header">
+                                <p class="card-header-title" align="center">
+                                    Collateral used in loans
+                                </p>
+                                <a href="#" class="card-header-icon" aria-label="Delete card">
+                                    <span class="icon has-text-danger">
+                                        <i class="fa fa-trash-o fa-lg"></i>
+                                    </span>
+                                </a>
+                            </header>
+                            <div class="card-content" >
+                                <div class='content'><collateral></collateral>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="10" data-gs-width="7" data-gs-height="8">
+                        <div class="grid-stack-item-content card">
+                            <header class="card-header">
+                                <p class="card-header-title" align="center">
+                                    Lenders
+                                </p>
+                                <a href="#" class="card-header-icon" aria-label="Delete card">
+                                    <span class="icon has-text-danger">
+                                        <i class="fa fa-trash-o fa-lg"></i>
+                                    </span>
+                                </a>
+                            </header>
+                            <div class="card-content" >
+                                <div class='content'><div ng-controller="Controller"><tablemodule></tablemodule></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,7 +160,6 @@ data-gs-width="9" data-gs-height="4">
 <div class="grid-stack-item" data-gs-x="0" data-gs-y="8" data-gs-width="7" data-gs-height="7">
 <div class="tile is-child box grid-stack-item-content" id="pieChart">
 <collateral></collateral>
-
 </div>
 </div>
 
@@ -134,18 +172,15 @@ data-gs-width="9" data-gs-height="4">
 </article>
 </div>
 -->
-
                 </div>
+
             </section>
         </div>
 
 
         <script type="text/javascript">
             var options = {
-                animate: true,
-                resizable: {
-        handles: 'e, se, s, sw, w'
-    }
+                animate: true
             };
             $(function () {
                 $('.grid-stack').gridstack(options);
