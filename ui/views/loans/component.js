@@ -84,7 +84,7 @@ component('loans', {
                     .attr("transform", "rotate(-90)")
                     .attr("y", 7)
                     .attr("dy", "2em")
-                    .text("Total (ETH)");
+                    .text("ETH");
 
                // d3.select(".xAxis").attr("text-anchor", "begin")
             }
