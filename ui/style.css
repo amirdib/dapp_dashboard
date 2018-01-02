@@ -30,6 +30,20 @@ nav.navbar {
   font-weight: 700;
 }
 
+.header1{
+background: #eb98a8;
+    position:relative;
+    width:100%;
+    height:20%;
+
+}
+
+.content1{
+    background: #a8eb98;
+    position:relative;
+    width:100%;
+    height:80%;
+}
 
 /*CARD*/
 .card {
@@ -39,7 +53,16 @@ nav.navbar {
 
 .card-content {
   font-size: 14px;
+    position:relative;
+    height:100%;
+    width: 100%;
  background: #efd2fa;
+}
+
+.card-header {
+  background-color: lightblue;
+    position:relative;
+  font-weight: 400;
 }
 
 .card-header-title {
@@ -50,7 +73,7 @@ nav.navbar {
 
 /*GRID*/
 .grid-stack {
-/*    background: #f7fad2;*/
+    background: #f7fad2;
 }
 
 .grid-stack-item-content {

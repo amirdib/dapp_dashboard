@@ -38,11 +38,6 @@
                     <a class="navbar-item brand-text" href="#">
                         Dashboard
                     </a>
-                    <div class="navbar-burger burger" data-target="navMenu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
                 </div>
                 <div id="navMenu" class="navbar-menu">
                     <div class="navbar-start">
@@ -61,44 +56,67 @@
                 <div class="grid-stack">
 
 
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-                        <article class="tile is-child box grid-stack-item-content">
-                            <p class="title">Value Card 1</p>
-                            <p class="subtitle">Card 1</p>
-                        </article>
-                    </div>
-                    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="2">
-                        <article class="tile is-child box grid-stack-item-content">
-                            <p class="title">Value Card 2</p>
-                            <p class="subtitle">Card 2</p>
-                        </article>
-                    </div>
+
+<div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+<article class="tile is-child box grid-stack-item-content">
+<p class="title">Value Card 1</p>
+<p class="subtitle">Card 1</p>
+</article>
+</div>
+
+<div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="2">
+<article class="tile is-child box grid-stack-item-content">
+<p class="title">Value Card 2</p>
+<p class="subtitle">Card 2</p>
+</article>
+</div>
 
 
-                    <div class="grid-stack-item"
-                         data-gs-x="1" data-gs-y="3"
-                         data-gs-width="9" data-gs-height="4">
-                        <div class="grid-stack-item-content" id='loans-graph'>
-                            <loans></loans>
-                        </div>
-                    </div>
-
-
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="8" data-gs-width="7" data-gs-height="7">
-                        <div class="tile is-child box grid-stack-item-content" id="pieChart">
-                            <collateral></collateral>
-
-                        </div>
-                    </div>
-
-
-                    <div class="grid-stack-item" data-gs-x="4" data-gs-y="17" data-gs-width="7" data-gs-height="8">
-                        <article class="tile is-child box grid-stack-item-content">
-                            <div ng-controller="Controller">
-                                <tablemodule></tablemodule>
+                    <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="5" data-gs-height="4">
+                        <div class="grid-stack-item-content card" id='loans-graph'>
+                            <header class="card-header">
+                                <p class="card-header-title">
+                                    Component
+                                </p>
+                                <a href="#" class="card-header-icon" aria-label="Delete card">
+                                    <span class="icon has-text-danger">
+                                        <i class="fa fa-trash-o fa-lg"></i>
+                                    </span>
+                                </a>
+                            </header>
+                            <div class="card-content" >
+                                <div class='content'><loans></loans></div>
                             </div>
-                        </article>
+                        </div>
                     </div>
+
+                    <!--
+
+<div class="grid-stack-item"
+data-gs-x="1" data-gs-y="3"
+data-gs-width="9" data-gs-height="4">
+<div class="grid-stack-item-content" id='loans-graph'>
+<loans></loans>
+</div>
+</div>
+
+
+<div class="grid-stack-item" data-gs-x="0" data-gs-y="8" data-gs-width="7" data-gs-height="7">
+<div class="tile is-child box grid-stack-item-content" id="pieChart">
+<collateral></collateral>
+
+</div>
+</div>
+
+
+<div class="grid-stack-item" data-gs-x="4" data-gs-y="17" data-gs-width="7" data-gs-height="8">
+<article class="tile is-child box grid-stack-item-content">
+<div ng-controller="Controller">
+<tablemodule></tablemodule>
+</div>
+</article>
+</div>
+-->
 
                 </div>
             </section>
@@ -107,9 +125,7 @@
 
         <script type="text/javascript">
             var options = {
-                animate: true,
-                rtl: true,
-                float: false
+                animate: true
             };
             $(function () {
                 $('.grid-stack').gridstack(options);

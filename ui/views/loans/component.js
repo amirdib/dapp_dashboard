@@ -5,7 +5,7 @@ component('loans', {
     controller: ['$scope', '$http', function($scope, $http) {
         console.log('enter loans module')
 
-        var margin = {top: 20, right: 20, bottom: 30, left: 50};
+        var margin = {top: 60, right: 30, bottom: 30, left: 50};
         width = parseInt(d3.select('#loans-graph').style('width'), 10)
         height = parseInt(d3.select('#loans-graph').style('height'), 10)
 
@@ -76,6 +76,7 @@ component('loans', {
                     .call(d3.axisBottom(x));
 
                 g.append("g")
+                    .attr("text-anchor", "begin")
                     .attr("class", "xAxis")
                     .call(d3.axisLeft(y))
                     .append("text")
@@ -85,7 +86,7 @@ component('loans', {
                     .attr("dy", "2em")
                     .text("Total (ETH)");
 
-                d3.select(".xAxis").attr("text-anchor", "begin")
+               // d3.select(".xAxis").attr("text-anchor", "begin")
             }
 
             console.log('drawing with width ' + width + ', height ' + height)
