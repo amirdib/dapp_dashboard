@@ -142,7 +142,10 @@ data-gs-width="9" data-gs-height="4">
 
         <script type="text/javascript">
             var options = {
-                animate: true
+                animate: true,
+                resizable: {
+        handles: 'e, se, s, sw, w'
+    }
             };
             $(function () {
                 $('.grid-stack').gridstack(options);

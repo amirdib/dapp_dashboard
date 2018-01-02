@@ -149,3 +149,8 @@ div#loans-graph{
      margin-bottom: 5px;
 
 }
+
+.ui-resizable-se{
+          width: 125px;
+      height: 45px;
+}

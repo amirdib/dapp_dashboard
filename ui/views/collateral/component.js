@@ -12,6 +12,7 @@ component('collateral', {
             width = parseInt(d3.select('#pieChart').style('width'), 10),
             height = parseInt(d3.select('#pieChart').style('height'), 10);
 
+        var node  = $("#pieChart")
 
         d3.json("http://127.0.0.1:8085/collaterals",function(error, data) {
             if (error) throw error;
@@ -22,19 +23,21 @@ component('collateral', {
 
             $('.grid-stack').on('gsresizestop', function (event, elem) {
 
-                var grid = $('.grid-stack').data('gridstack');
-                var gridCellWidth = grid.cellWidth(),
-                    gridCellHeight = grid.cellHeight();
+                if (elem.contains(node[0])){
 
-                var gridVerticalMargin = grid.opts.verticalMargin;
+                    var grid = $('.grid-stack').data('gridstack');
+                    var gridCellWidth = grid.cellWidth(),
+                        gridCellHeight = grid.cellHeight();
 
-                var elemWidth = $(elem).attr('data-gs-width'),
-                    elemHeight = $(elem).attr('data-gs-height');
+                    var gridVerticalMargin = grid.opts.verticalMargin;
 
-                var width = gridCellWidth * elemWidth,
-                    height = gridCellHeight * elemHeight + gridVerticalMargin * (elemHeight - 1);
+                    var elemWidth = $(elem).attr('data-gs-width'),
+                        elemHeight = $(elem).attr('data-gs-height');
 
-                redraw(width, height);
+                    var width = gridCellWidth * elemWidth,
+                        height = gridCellHeight * elemHeight + gridVerticalMargin * (elemHeight - 1);
+
+                    redraw(width, height);};
             });
 
             function redraw(width, height){

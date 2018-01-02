@@ -11,6 +11,8 @@ component('loans', {
 
         var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
+        var node = $("#loans-graph").get()
+
         d3.json("http://127.0.0.1:8085/loans", function(error, data) {
 
             if (error) throw error;
@@ -24,6 +26,7 @@ component('loans', {
 
             $('.grid-stack').on('gsresizestop', function (event, elem) {
 
+                if (elem.contains(node[0])){
                 var grid = $('.grid-stack').data('gridstack');
                 var gridCellWidth = grid.cellWidth(),
                     gridCellHeight = grid.cellHeight();
@@ -37,6 +40,7 @@ component('loans', {
                     height = gridCellHeight * elemHeight + gridVerticalMargin * (elemHeight - 1);
 
                 redraw(width, height);
+                }
             });
 
             function redraw(width, height ){
