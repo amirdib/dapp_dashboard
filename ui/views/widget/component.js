@@ -34,22 +34,24 @@ angular.module('widget')
                          width: 1 + 3 * Math.random(),
                          height: 1 + 3 * Math.random()}][0]
 
+            id = uuidv4()
+
             console.log(cardType)
             switch (cardType) {
                 case 'card':
-                    element ="<div id='gsi-1' id='gsi-1' class='grid-stack-item ui-draggable ui-resizable ui-resizable-autohide' data-gs-x='1' data-gs-y='0' data-gs-width='4' data-gs-height='2'> <article class='tile is-child box grid-stack-item-content'><p class='title'>Value Card 1</p><p class='subtitle'>Card 1</p></article></div>"
+                    element ="<div id='"+ id + "' id='gsi-1' class='grid-stack-item ui-draggable ui-resizable ui-resizable-autohide' data-gs-x='1' data-gs-y='0' data-gs-width='4' data-gs-height='2'> <article class='tile is-child box grid-stack-item-content'><p class='title'>Value Card 1</p><p class='subtitle'>Card 1</p></article></div>"
                     break;
 
                 case 'totalAmount':
-                    element ="<div id='gsi-1' class='grid-stack-item' data-gs-x='1' data-gs-y='3' data-gs-width='10' data-gs-height='4'> <div class='grid-stack-item-content card' id='loans-graph'> <header class='card-header'> <p class='card-header-title' align='center'> Total amount funded in ETH </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><loans></loans></div> </div> </div> </div>"
+                    element ="<div id='"+ id + "' class='grid-stack-item' data-gs-x='1' data-gs-y='3' data-gs-width='10' data-gs-height='4'> <div class='grid-stack-item-content card' id='loans-graph'> <header class='card-header'> <p class='card-header-title' align='center'> Total amount funded in ETH </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><loans></loans></div> </div> </div> </div>"
                     break;
 
                 case 'collaterals':
-                    element = "<div id='gsi-1' data-gs-x='7' data-gs-y='6' data-gs-width='5' data-gs-height='6'> <div class='grid-stack-item-content card' id='pieChart'> <header class='card-header'> <p class='card-header-title' align='center'> Collateral used in loans </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><collateral></collateral> </div> </div> </div> </div>"
+                    element = "<div id='"+ id + "' data-gs-x='7' data-gs-y='6' data-gs-width='5' data-gs-height='6'> <div class='grid-stack-item-content card' id='pieChart'> <header class='card-header'> <p class='card-header-title' align='center'> Collateral used in loans </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><collateral></collateral> </div> </div> </div> </div>"
                     break;
 
                 case 'topLenders':
-                    element ="<div id='gsi-1' class='grid-stack-item' data-gs-x='0' data-gs-y='10' data-gs-width='7' data-gs-height='8'> <div class='grid-stack-item-content card'> <header class='card-header'> <p class='card-header-title' align='center'> Lenders </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><div ng-controller='Controller'><tablemodule></tablemodule></div> </div> </div> </div> </div>"
+                    element ="<div id='"+ id + "' class='grid-stack-item' data-gs-x='0' data-gs-y='10' data-gs-width='7' data-gs-height='8'> <div class='grid-stack-item-content card'> <header class='card-header'> <p class='card-header-title' align='center'> Lenders </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><div ng-controller='Controller'><tablemodule></tablemodule></div> </div> </div> </div> </div>"
                     console.log('Lenders')
                     break;
             }
@@ -63,7 +65,7 @@ angular.module('widget')
             $('.grid-stack').gridstack();
             var grid = $('.grid-stack').data('gridstack');
             $('.grid-stack').append(element)
-            var widget = $('#gsi-1')
+            var widget = $('#'+id)
 
 
             recompile(widget)
