@@ -13,7 +13,7 @@ module('collateral')
 
 
 
-        d3.json("http://54.77.50.118:8085/collaterals",function(error, data) {
+        d3.json("http://34.243.28.41:8085/collaterals",function(error, data) {
             if (error) throw error;
 
             var node  = $("#pieChart"+$scope.id)
