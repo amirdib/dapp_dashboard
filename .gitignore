@@ -7,3 +7,4 @@ dashboard
 __pycache__
 log/
 logs/
+data/

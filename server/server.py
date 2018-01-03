@@ -29,9 +29,10 @@ def get_loans():
 
     historical_lending = get_historical_lending(df_loans).dropna()
     data = historical_lending.reset_index().rename(
-        columns={'timeStamp': 'x', 'wanted_wei': 'y'}).to_json(orient='records')
+        columns={'timeStamp': 'x', 'wanted_wei': 'y'})
+    data['x'] = data['x'].astype(str)
 
-    return data
+    return data.to_json(orient='records')
 
 
 @app.get('/table')

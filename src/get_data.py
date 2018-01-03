@@ -2,14 +2,17 @@ import pandas as pd
 import json
 from tqdm import tqdm
 import sys
+from datetime import datetime
 import os.path
 sys.path.append('../src/')
 
 from web3 import Web3, HTTPProvider, TestRPCProvider, KeepAliveRPCProvider
 from solc import compile_source
 from web3.contract import ConciseContract
+import etherscan.accounts as accounts
 
-from .utils import json_reader, parallel_dict_update, write_pickle
+
+from utils import json_reader, parallel_dict_update, write_pickle, read_pickle
 
 api_key = '3JS9BXYFNNGNX17WKANJMU63R6BQKJW5WE'
 config = json_reader('config.json')
@@ -18,6 +21,18 @@ LEDGER_ABI = config['LEDGER_ABI']
 LEDGER_ADDRESS = config['LEDGER_ADDRESS']
 node = config['node']
 DECIMALS = 1e18
+
+
+def timestamp_converter(timeStamp):
+    timeStamp = int(timeStamp)
+    return datetime.fromtimestamp(timeStamp).strftime('%Y-%m-%d %H:%M:%S')
+
+
+def get_contract_time(contract_adress, api_key):
+    api = accounts.Account(address=contract_adress, api_key=api_key)
+    time = api.get_transaction_page(page=1, offset=1, internal=True)[
+        0]['timeStamp']
+    return timestamp_converter(time)
 
 
 def get_contract_instance(node, abi, contract_address):
@@ -48,8 +63,8 @@ def get_loan_data(contract_address):
             return None
     try:
         return {contract_address: {'currency': contract_instance.currency(),
-                                   'wanted_wei': contract_instance.wanted_wei(),
-                                   'premium_wei': contract_instance.premium_wei(),
+                                   'wanted_wei': float(contract_instance.wanted_wei()),
+                                   'premium_wei': float(contract_instance.premium_wei()),
                                    'TokenName': contract_instance.getTokenName(),
                                    'TokenInfoLink': contract_instance.getTokenInfoLink(),
                                    'TokenSmartcontractAddress': contract_instance.getTokenSmartcontractAddress(),
@@ -101,6 +116,8 @@ def get_timeStamps(df_loans):
 
 
 def preprocess(loans):
+    import ipdb
+#    ipdb.set_trace()
     df = pd.DataFrame.from_dict(loans, orient="index").reset_index()
     df = df.rename(columns={'index': 'SmartContractAdress'})
     df['timeStamp'] = get_timeStamps(df)
@@ -111,15 +128,18 @@ def preprocess(loans):
 
 
 def main(data_path):
-    if os.path.isfile(data_path):
-        df_loans = read_pickle("{}preprocessed_loans.pickle".format(data_path))
-    else:
-        contract_addresses = get_contract_addresses()
-        loans = get_all_loans(contract_addresses)
-        write_pickle(df, "{}loans.pickle".format(data_path))
-        df_loans = preprocess(loans)
-        write_pickle(df, "{}preprocessed_loans.pickle".format(data_path))
+    # if os.path.isfile(data_path):
+    #     df_loans = read_pickle("{}preprocessed_loans.pickle".format(data_path))
+    # else:
+    # contract_addresses = get_contract_addresses()
+    # loans = get_all_loans(contract_addresses)
+   # write_pickle(loans, "{}loans.pickle".format(data_path))
+    #
+    loans = read_pickle("{}loans.pickle".format(data_path))
+    df_loans = preprocess(loans)
+    write_pickle(df_loans, "{}preprocessed_loans.pickle".format(data_path))
 
 
 if __name__ == '__main__':
-    main()
+    path = '/home/ubuntu/projet/test/solidity/dapp_dashboard/data/'
+    main(path)
