@@ -4,6 +4,7 @@ from tqdm import tqdm
 import sys
 from datetime import datetime
 import os.path
+import ipdb
 sys.path.append('../src/')
 
 from web3 import Web3, HTTPProvider, TestRPCProvider, KeepAliveRPCProvider
@@ -116,8 +117,6 @@ def get_timeStamps(df_loans):
 
 
 def preprocess(loans):
-    import ipdb
-#    ipdb.set_trace()
     df = pd.DataFrame.from_dict(loans, orient="index").reset_index()
     df = df.rename(columns={'index': 'SmartContractAdress'})
     df['timeStamp'] = get_timeStamps(df)
@@ -131,11 +130,11 @@ def main(data_path):
     # if os.path.isfile(data_path):
     #     df_loans = read_pickle("{}preprocessed_loans.pickle".format(data_path))
     # else:
-    # contract_addresses = get_contract_addresses()
-    # loans = get_all_loans(contract_addresses)
-   # write_pickle(loans, "{}loans.pickle".format(data_path))
+    contract_addresses = get_contract_addresses()
+    loans = get_all_loans(contract_addresses)
+    write_pickle(loans, "{}loans.pickle".format(data_path))
     #
-    loans = read_pickle("{}loans.pickle".format(data_path))
+#    loans = read_pickle("{}loans.pickle".format(data_path))
     df_loans = preprocess(loans)
     write_pickle(df_loans, "{}preprocessed_loans.pickle".format(data_path))
 

@@ -48,4 +48,4 @@ def get_collat_statistics():
     return collateral_count.to_json(orient='records')
 
 
-app.run(host='localhost', port=8085)
+app.run(host='0.0.0.0', port=8085)
