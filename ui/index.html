@@ -23,6 +23,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
 
         <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.min.js'></script>
         <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/gridstack.js/0.3.0/gridstack.jQueryUI.min.js'></script>
@@ -118,13 +119,16 @@
                                 </a>
                             </header>
                             <div class="card-content" >
-                                <div class='content'><loans></loans></div>
+                                <div class="chart-container" style="position: relative; height:100%; width:100%">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                                <div class='content'  ng-controller="loansController" ng-init="id=''"><loans></loans></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="grid-stack-item" data-gs-x="7" data-gs-y="6" data-gs-width="5" data-gs-height="6">
-                        <div class="grid-stack-item-content card" id='pieChart'>
+                        <div class="grid-stack-item-content card">
                             <header class="card-header">
                                 <p class="card-header-title" align="center">
                                     Collateral used in loans
@@ -136,7 +140,10 @@
                                 </a>
                             </header>
                             <div class="card-content" >
-                                <div class='content'><collateral></collateral>
+                                <div class="chart-container" style="position: relative; height:100%; width:100%">
+                                    <canvas id="pieChart"></canvas>
+                                </div>
+                                <div class='content' ng-controller="collateralController" ng-init="id=''"><collateral></collateral>
                                 </div>
                             </div>
                         </div>
@@ -203,9 +210,12 @@ data-gs-width="9" data-gs-height="4">
             });
         </script>
     </body>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/color-scheme/1.0.0/color-scheme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.3/angular.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/0.8.3/ng-table.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
 
     <script src="bower_components/d3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>

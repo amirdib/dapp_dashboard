@@ -15,10 +15,10 @@ angular.module('widget')
             console.log($event.target)
             target = $event.target
             if ($event.target.className == "fa fa-trash-o fa-lg"){
-            var  node = $(target).closest('.grid-stack-item')
-            console.log($(target).closest('.grid-stack-item'))
-            console.log('click grid')
-            $scope.grid.removeWidget(node)
+                var  node = $(target).closest('.grid-stack-item')
+                console.log($(target).closest('.grid-stack-item'))
+                console.log('click grid')
+                $scope.grid.removeWidget(node)
             }
         }
 
@@ -34,7 +34,7 @@ angular.module('widget')
                          width: 1 + 3 * Math.random(),
                          height: 1 + 3 * Math.random()}][0]
 
-            id = uuidv4()
+            id = new Date().getTime()
 
             console.log(cardType)
             switch (cardType) {
@@ -43,11 +43,14 @@ angular.module('widget')
                     break;
 
                 case 'totalAmount':
-                    element ="<div id='"+ id + "' class='grid-stack-item' data-gs-x='1' data-gs-y='3' data-gs-width='10' data-gs-height='4'> <div class='grid-stack-item-content card' id='loans-graph'> <header class='card-header'> <p class='card-header-title' align='center'> Total amount funded in ETH </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><loans></loans></div> </div> </div> </div>"
+
+                    element = "<div id='"+ id + "' data-gs-x='1' data-gs-y='3' data-gs-width='10' data-gs-height='4'> <div class='grid-stack-item-content card' id='loans-graph"+id+"'> <header class='card-header'> <p class='card-header-title' align='center'> Total amount funded in ETH </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='chart-container' style='position: relative; height:100%; width:100%'> <canvas id='myChart"+id+"'></canvas> </div> <div class='content' ng-controller='loansController' ng-init='id ="+id+"'><loans></loans></div> </div> </div> </div>"
                     break;
 
                 case 'collaterals':
                     element = "<div id='"+ id + "' data-gs-x='7' data-gs-y='6' data-gs-width='5' data-gs-height='6'> <div class='grid-stack-item-content card' id='pieChart'> <header class='card-header'> <p class='card-header-title' align='center'> Collateral used in loans </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='content'><collateral></collateral> </div> </div> </div> </div>"
+
+                    element = "<div id='"+ id + "' data-gs-x='1' data-gs-y='3' data-gs-width='10' data-gs-height='4'> <div class='grid-stack-item-content card'> <header class='card-header'> <p class='card-header-title' align='center'> Total amount funded in ETH </p> <a href='#' class='card-header-icon' aria-label='Delete card'> <span class='icon has-text-danger'> <i class='fa fa-trash-o fa-lg'></i> </span> </a> </header> <div class='card-content' > <div class='chart-container' style='position: relative; height:100%; width:100%'> <canvas id='pieChart"+id+"'></canvas> </div> <div class='content' ng-controller='collateralController' ng-init='id ="+id+"'><collateral></collateral></div> </div> </div> </div>"
                     break;
 
                 case 'topLenders':

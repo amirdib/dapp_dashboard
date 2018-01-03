@@ -2,7 +2,7 @@ angular.module('tableModule', ['ngTable'])
     .controller('Controller', ['$scope', '$http', 'NgTableParams', function($scope, $http, NgTableParams) {
 
     $http
-            .get('http://127.0.0.1:8085/table')
+            .get('http://54.77.50.118:8085/table')
             .then(function(response) {
         var lenders = response.data;
             $scope.tableParams = new NgTableParams({page: 1, count: 10}, { data: lenders});
