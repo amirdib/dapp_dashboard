@@ -31,7 +31,7 @@ py==1.5.2
 -e git+https://github.com/amirdib/dapp_dashboard.git@1489e7f3f590407851969c6153f13557995b2f0a#egg=py_etherscan_api
 py-solc==2.1.0
 pycryptodome==3.4.7
-Pygments==2.2.0
+Pygments==2.7.4
 pylru==1.0.9
 pyparsing==2.2.0
 pysha3==1.0.2
