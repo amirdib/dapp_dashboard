@@ -27,7 +27,7 @@ pickleshare==0.7.4
 pluggy==0.6.0
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
-py==1.5.2
+py==1.10.0
 -e git+https://github.com/amirdib/dapp_dashboard.git@1489e7f3f590407851969c6153f13557995b2f0a#egg=py_etherscan_api
 py-solc==2.1.0
 pycryptodome==3.4.7
